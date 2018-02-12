@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource
+		name="jdbc/colegio"
+		type="javax.sqp.DataSource"
+		mexActive="100" maxIdle="30" maxWait="10000"
+		url="jdbc:mysql:/localhost/colegio"
+		driverClassName="com.mysql.jdbc.Driver"
+		username="root" password="root"
+		validationQuery="SELECT 1"
+	/>
+</Context>
