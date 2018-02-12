@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Borrar profesores</title>
+<title>Borrar asignaturas</title>
 <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 	<div><jsp:include page="./header.html" /></div>
 
-	<div style="padding:80px"><br><br><h2>Eliminar profesores</h2><br><br>
+	<div style="padding:80px"><br><br><h2>Eliminar asignaturas</h2><br><br>
 	<form action="./" method="post">
-		Introduce nombre y apellidos o DNI: <br><input type="text" name="busqueda" size="25"><br><br> 
+		Introduce nombre o identificador: <br><input type="text" name="busqueda" size="25"><br><br> 
 		<input type="submit" name="boton" value="Eliminar">
 	</form></div>
 

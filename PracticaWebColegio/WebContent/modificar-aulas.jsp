@@ -8,10 +8,21 @@
 <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-	<jsp:include page="./header.html" />
+	<div><jsp:include page="./header.html" /></div>
 
-	
+	<div style="padding:80px"><br><br><h2>Modificar datos de aula</h2><br><br>
+	<form action="./" method="post">
+		
+		Identificador del aula: <br><input type="text" name="id" size="25"><br><br><br>
+		
+		<h3>Nuevos datos</h3><br> 
+		
+		Nombre: <br><input type="text" name="nombre" size="25"><br><br> 
+		Capacidad: <br><input type="text" name="capacidad" size="25"><br><br> 
+		<input type="submit" name="boton" value="Modificar">
+	</form></div>
 
-	<jsp:include page="./footer.html" />
+
+	<div><jsp:include page="./footer.html" /></div>
 </body>
 </html>

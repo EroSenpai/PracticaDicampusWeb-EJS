@@ -10,7 +10,7 @@
 <body>
 	<div><jsp:include page="./header.html" /></div>
 
-	<div style="padding:80px"><br><br><h2>Añadir alumnos</h2><br><br>
+	<div style="padding:80px"><br><br><h2>Añadir profesores</h2><br><br>
 	<form action="./" method="post">
 		Nombre y apellidos: <br><input type="text" name="nombreApellidos" size="25"><br><br> 
 		Dirección: <br><input type="text" name="dirección" size="25"><br><br> 

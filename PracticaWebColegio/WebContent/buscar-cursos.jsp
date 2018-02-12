@@ -10,9 +10,9 @@
 <body>
 	<div><jsp:include page="./header.html" /></div>
 
-	<div style="padding:80px"><br><br><h2>Buscar profesores</h2><br><br>
+	<div style="padding:80px"><br><br><h2>Buscar cursos</h2><br><br>
 	<form action="./" method="post">
-		Introduce nombre o identificador <br><input type="text" name="busqueda" size="25"><br><br> 
+		Introduce nombre o identificador: <br><input type="text" name="busqueda" size="25"><br><br> 
 		<input type="submit" name="boton" value="Buscar">
 	</form></div>
 

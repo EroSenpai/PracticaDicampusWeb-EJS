@@ -8,10 +8,24 @@
 <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-	<jsp:include page="./header.html" />
+	<div><jsp:include page="./header.html" /></div>
 
-	
+	<div style="padding:80px"><br><br><h2>Modificar datos de profesor</h2><br><br>
+	<form action="./" method="post">
+		
+		DNI del profesor: <br><input type="text" name="dni" size="25"><br><br><br>
+		
+		<h3>Nuevos datos</h3><br> 
+		
+		Nombre y apellidos: <br><input type="text" name="nombreApellidos" size="25"><br><br> 
+		Dirección: <br><input type="text" name="dirección" size="25"><br><br> 
+		Email: <br><input type="text" name="email" size="25"><br><br>
+		Teléfono: <br><input type="text" name="telefono" size="25"><br><br>
+		Asignaturas impartidas (por identificador, separadas por comas): <br><input type="text" name="impartidas" size="25"><br><br>
+		<input type="submit" name="boton" value="Modificar">
+	</form></div>
 
-	<jsp:include page="./footer.html" />
+
+	<div><jsp:include page="./footer.html" /></div>
 </body>
 </html>
