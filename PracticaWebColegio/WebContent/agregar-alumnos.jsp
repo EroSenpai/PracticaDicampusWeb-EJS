@@ -4,16 +4,19 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Buscar asignaturas</title>
+<title>Añadir alumnos</title>
 <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 	<div><jsp:include page="./header.html" /></div>
 
-	<div style="padding:80px"><br><br><h2>Buscar asignaturas</h2><br><br>
+	<div style="padding:80px"><br><br><h2>Añadir alumnos</h2><br><br>
 	<form action="./" method="post">
-		Introduce nombre o identificador: <br><input type="text" name="busqueda" size="25"><br><br> 
-		<input type="submit" name="boton" value="Buscar">
+		Nombre y apellidos: <br><input type="text" name="nombreApellidos" size="25"><br><br> 
+		Dirección: <br><input type="text" name="dirección" size="25"><br><br> 
+		Email: <br><input type="text" name="email" size="25"><br><br>
+		Teléfono: <br><input type="text" name="telefono" size="25"><br><br>
+		<input type="submit" name="boton" value="Añadir">
 	</form></div>
 
 
