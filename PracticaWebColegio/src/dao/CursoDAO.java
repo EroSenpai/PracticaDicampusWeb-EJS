@@ -1,3 +1,4 @@
+package dao;
 
 
 import java.io.BufferedWriter;
@@ -17,12 +18,15 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import beans.Alumno;
+import beans.Curso;
+
 public class CursoDAO {
 
 	// AÑADIR AL TOSTRING DE CURSO Y PROFESORES
 	// EL BUSCAR SU LISTA DE ALUMNOS/ASIGNATURAS RELACIONADAS;
 
-	static SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+	public static SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
 
 	// Añade un objeto Curso pasado por parametro a la base de datos
 	public static void añadirCurso(Curso curso) {
