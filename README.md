@@ -7,4 +7,6 @@ Detalles por si algo casca muy fuerte:
 
   ClickDerecho en el proyexto -> BuildPath/Configure BuildPath -> Deployment Assembly
   La ruta de Webcontent puede estar definida como WebContent/WebContent -> Cambiarla a \WebContent
+  
+  
 2- Al agregar el META-INF/context.xml (POOL DE CONEXIONES) debemos agregar el .jar del mysql en la carpeta lib del tomcat
