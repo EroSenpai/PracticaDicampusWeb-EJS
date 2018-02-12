@@ -15,6 +15,10 @@ body {
 	font-family: helvetica, geneva, serif;
 }
 
+.fondo {
+	background-image: url('colegio.jpg');
+}
+
 div.contenedor, div.contenido {
 	width: 1200px;
 	margin: 0 auto;
@@ -23,6 +27,8 @@ div.contenedor, div.contenido {
 /** Menú **/
 .navegacion {
 	background-color: #2800db;
+	position: fixed;
+	width: 100%;
 }
 
 nav {
@@ -76,7 +82,12 @@ nav ul li:hover {
 
 /** Footer **/
 footer {
+	padding: 20px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
 	background-color: #2800db;
+	width: 100%;
 }
 
 p.copyright {
