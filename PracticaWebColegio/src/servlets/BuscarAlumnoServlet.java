@@ -1,6 +1,5 @@
 package servlets;
 
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import beans.Alumno;
 import dao.AlumnoDAO;
-
 
 /**
  * Servlet implementation class BuscarAlumnoServlet
@@ -34,18 +32,16 @@ public class BuscarAlumnoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String param = request.getParameter("parametro");
+		String param = request.getParameter("parametro"); //cambiar por nombre de Field del formulario
 
-		
-		HttpSession sesion= request.getSession(true);
-		
+		HttpSession sesion = request.getSession(true);
+
 		Alumno al = AlumnoDAO.buscar(param);
-		
+
 		sesion.setAttribute("alumno", al);
-		
-		request.getRequestDispatcher("").forward(request, response);
-		
-		
+
+		request.getRequestDispatcher("").forward(request, response); // Añadir direccion del JSP final
+
 	}
 
 	/**
