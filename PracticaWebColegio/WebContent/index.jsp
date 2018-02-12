@@ -9,9 +9,7 @@
 </head>
 <body>
 	<jsp:include page="./header.html" />
-	<div style="float: right">
-		<img src="img/fondo.png">
-	</div>
-	<div style="float: bottom"><jsp:include page="./footer.html" /></div>
+	<div id="fondo"></div>	
+	<jsp:include page="./footer.html" />
 </body>
 </html>
