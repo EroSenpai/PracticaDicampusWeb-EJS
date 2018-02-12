@@ -291,5 +291,74 @@ public class ProfesorDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public static Profesor buscar(String p) {
+		Profesor pr=null;
+		/*try {
 
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/colegio", "root", "");
+			Statement stmt = conn.createStatement();
+
+			String consulta = "SELECT * FROM profesores WHERE ";
+
+			consulta = consulta + "dni = '" + busqueda + "' OR nombre_apellidos = '" + busqueda + "'";
+
+			ResultSet rs = stmt.executeQuery(consulta);
+
+			if (!rs.next()) {
+
+				System.out.println("Profesor no encontrado.\n");
+
+			}
+
+			else {
+
+				System.out.println("Profesor:\t" + rs.getString("nombre_apellidos"));
+				System.out.println("Dirección:\t" + rs.getString("direccion"));
+				System.out.println("Email:\t\t" + rs.getString("email"));
+				System.out.println("Teléfono\t" + rs.getString("telefono"));
+				System.out.println("Número de DNI:\t" + rs.getString("dni"));
+
+				String consultaAsignaturas = "SELECT * FROM profesores_asignaturas WHERE dni = '";
+				consultaAsignaturas = consultaAsignaturas + rs.getString("dni") + "'";
+				ResultSet rsAsignaturas = stmt.executeQuery(consultaAsignaturas);
+
+				System.out.print("Asignaturas:");
+
+				while (rsAsignaturas.next()) {
+
+					int idAsignatura = rsAsignaturas.getInt("identificador");
+					Asignatura a = AsignaturaDAO.devolverAsignatura(idAsignatura);
+					String nombreAsignatura = a.getNombre();
+
+					System.out.print("\t" + nombreAsignatura);
+
+				}
+
+				System.out.println("\n");
+				rsAsignaturas.close();
+
+			}
+
+			rs.close();
+			stmt.close();
+			conn.close();
+
+		}
+
+		catch (ClassNotFoundException e) {
+
+			System.out.println("No se ha encontrado el driver.\n");
+
+		}
+
+		catch (SQLException e) {
+
+			System.out.println("Error de SQL.\n");
+
+		}*/
+		return pr;
+	}
 }
