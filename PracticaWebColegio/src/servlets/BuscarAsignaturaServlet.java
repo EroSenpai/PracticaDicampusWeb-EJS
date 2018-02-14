@@ -33,8 +33,8 @@ public class BuscarAsignaturaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String param = request.getParameter("parametro"); //cambiar por nombre de Field del formulario
-
+		String param = request.getParameter("busqueda");
+		
 		HttpSession sesion = request.getSession(true);
 
 		Asignatura asig = AsignaturaDAO.buscar(param);
