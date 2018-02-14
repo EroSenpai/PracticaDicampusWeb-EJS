@@ -11,7 +11,7 @@
 	<div><jsp:include page="./header.html" /></div>
 
 	<div style="padding:80px"><br><br><h2>Eliminar alumnos</h2><br><br>
-	<form action="./" method="post">
+	<form action="./borrar-alumnos.jsp" method="post">
 		Introduce nombre y apellidos o número de matrícula: <br><input type="text" name="busqueda" size="25"><br><br> 
 		<input type="submit" name="boton" value="Eliminar">
 	</form></div>

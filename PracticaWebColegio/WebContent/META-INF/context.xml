@@ -4,7 +4,7 @@
 		name="jdbc/colegio"
 		type="javax.sqp.DataSource"
 		mexActive="100" maxIdle="30" maxWait="10000"
-		url="jdbc:mysql:/localhost/colegio"
+		url="jdbc:mysql:/localhost:3306/colegio"
 		driverClassName="com.mysql.jdbc.Driver"
 		username="root" password="root"
 		validationQuery="SELECT 1"

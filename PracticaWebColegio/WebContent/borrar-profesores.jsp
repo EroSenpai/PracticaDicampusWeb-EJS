@@ -11,11 +11,20 @@
 	<div><jsp:include page="./header.html" /></div>
 
 	<div style="padding:80px"><br><br><h2>Eliminar profesores</h2><br><br>
-	<form action="./" method="post">
+	<form action="./borrar-profesores.jsp" method="post">
 		Introduce nombre y apellidos o DNI: <br><input type="text" name="busqueda" size="25"><br><br> 
 		<input type="submit" name="boton" value="Eliminar">
 	</form></div>
 
+	<%if (request.getParameter("boton") != null) {%>
+
+	<jsp:useBean id="bean" class="beans.Profesor" scope="session"></jsp:useBean>
+
+	<jsp:getProperty name="bean" property="mensaje"></jsp:getProperty>
+	
+	<!-- Añadir un método que devuelva un string con mensaje de correcto o incorrecto según proceda -->
+	
+	<%}%>
 
 	<div><jsp:include page="./footer.html" /></div>
 </body>

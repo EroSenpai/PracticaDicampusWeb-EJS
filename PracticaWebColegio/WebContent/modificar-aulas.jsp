@@ -11,7 +11,7 @@
 	<div><jsp:include page="./header.html" /></div>
 
 	<div style="padding:80px"><br><br><h2>Modificar datos de aula</h2><br><br>
-	<form action="./" method="post">
+	<form action="./modificar-aulas.jsp" method="post">
 		
 		Identificador del aula: <br><input type="text" name="id" size="25"><br><br><br>
 		
@@ -22,6 +22,15 @@
 		<input type="submit" name="boton" value="Modificar">
 	</form></div>
 
+	<%if (request.getParameter("boton") != null) {%>
+
+	<jsp:useBean id="bean" class="beans.Aula" scope="session"></jsp:useBean>
+
+	<jsp:getProperty name="bean" property="mensaje"></jsp:getProperty>
+	
+	<!-- Añadir un método que devuelva un string con mensaje de correcto o incorrecto según proceda -->
+	
+	<%}%>
 
 	<div><jsp:include page="./footer.html" /></div>
 </body>

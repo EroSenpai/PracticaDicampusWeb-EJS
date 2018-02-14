@@ -11,13 +11,22 @@
 	<div><jsp:include page="./header.html" /></div>
 
 	<div style="padding:80px"><br><br><h2>Añadir asignaturas</h2><br><br>
-	<form action="./" method="post">
+	<form action="./agregar-asignaturas.jsp" method="post">
 		Nombre: <br><input type="text" name="nombre" size="25"><br><br> 
 		Créditos: <br><input type="text" name="creditos" size="25"><br><br> 
 		Plazas: <br><input type="text" name="plazas" size="25"><br><br>
 		<input type="submit" name="boton" value="Añadir">
 	</form></div>
 
+	<%if (request.getParameter("boton") != null) {%>
+
+	<jsp:useBean id="bean" class="beans.Asignatura" scope="session"></jsp:useBean>
+
+	<jsp:getProperty name="bean" property="mensaje"></jsp:getProperty>
+	
+	<!-- Añadir un método que devuelva un string con mensaje de correcto o incorrecto según proceda -->
+	
+	<%}%>
 
 	<div><jsp:include page="./footer.html" /></div>
 </body>

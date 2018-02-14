@@ -62,11 +62,9 @@ nav ul ul {
   background-color: rgba(250, 150, 39, .7);
   display: none;
 }
-
 nav ul li:hover > ul {
   display: block;
 }
-
 nav ul li:hover {
   background-color: rgba(250, 150, 39, .7);
 }

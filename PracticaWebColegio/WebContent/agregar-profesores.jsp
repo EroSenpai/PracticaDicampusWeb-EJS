@@ -11,7 +11,7 @@
 	<div><jsp:include page="./header.html" /></div>
 
 	<div style="padding:80px"><br><br><h2>Añadir profesores</h2><br><br>
-	<form action="./" method="post">
+	<form action="./agrgar-profesores.jsp" method="post">
 		Nombre y apellidos: <br><input type="text" name="nombreApellidos" size="25"><br><br> 
 		Dirección: <br><input type="text" name="dirección" size="25"><br><br> 
 		Email: <br><input type="text" name="email" size="25"><br><br>
@@ -21,6 +21,15 @@
 		<input type="submit" name="boton" value="Añadir">
 	</form></div>
 
+	<%if (request.getParameter("boton") != null) {%>
+
+	<jsp:useBean id="bean" class="beans.Profesor" scope="session"></jsp:useBean>
+
+	<jsp:getProperty name="bean" property="mensaje"></jsp:getProperty>
+	
+	<!-- Añadir un método que devuelva un string con mensaje de correcto o incorrecto según proceda -->
+	
+	<%}%>
 
 	<div><jsp:include page="./footer.html" /></div>
 </body>

@@ -11,11 +11,22 @@
 	<div><jsp:include page="./header.html" /></div>
 
 	<div style="padding:80px"><br><br><h2>Buscar aulas</h2><br><br>
-	<form action="./" method="post">
+	<form action="./buscar-aulas.jsp" method="post">
 		Introduce nombre o identificador: <br><input type="text" name="busqueda" size="25"><br><br> 
 		<input type="submit" name="boton" value="Buscar">
 	</form></div>
 
+	<%if (request.getParameter("boton") != null) {%>
+
+	<jsp:useBean id="bean" class="beans.Aula" scope="session"></jsp:useBean>
+
+	Nombre:
+	<jsp:getProperty name="bean" property="nombre"></jsp:getProperty><br><br> 	
+	Número identificador:
+	<jsp:getProperty name="bean" property="id"></jsp:getProperty><br><br> 
+	Capacidad:
+	<jsp:getProperty name="bean" property="capacidad"></jsp:getProperty><br><br> 
+	<%}%>
 
 	<div><jsp:include page="./footer.html" /></div>
 </body>
