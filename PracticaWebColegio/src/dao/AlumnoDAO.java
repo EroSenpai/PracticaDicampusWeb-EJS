@@ -59,6 +59,7 @@ public class AlumnoDAO {
 
 		String consulta = "SELECT * FROM alumnos WHERE nombre='" + nombre + "' AND apellidos='" + apellidos + "'";
 		Alumno aux = null;
+		
 		try {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:com/env");

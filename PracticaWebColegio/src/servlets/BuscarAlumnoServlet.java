@@ -32,6 +32,7 @@ public class BuscarAlumnoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String param = request.getParameter("parametro"); //cambiar por nombre de Field del formulario
 
 		HttpSession sesion = request.getSession(true);
