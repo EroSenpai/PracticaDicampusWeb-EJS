@@ -7,10 +7,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
+import beans.Alumno;
 import beans.Aula;
 
 public class AulaDAO {
-
+	
+	private static final String DATA_SOURCE_NAME = "jdbc/colegio";
+	
 	// Añade un objeto aula pasado por parámetro a la base de datos
 	public static void añadir(Aula aula) {
 
@@ -18,9 +26,12 @@ public class AulaDAO {
 				+ aula.getCapacidad() + ", " + aula.getId() + ")";
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/colegio", "root", "");
+			
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:com/env");
+			DataSource dataSource = (DataSource) envCtx.lookup(DATA_SOURCE_NAME);
+			Connection con = dataSource.getConnection();
+			
 			Statement stm = con.createStatement();
 			int rs = stm.executeUpdate(insert);
 
@@ -30,7 +41,7 @@ public class AulaDAO {
 			stm.close();
 			con.close();
 
-		} catch (ClassNotFoundException e) {
+		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException e) {
@@ -50,9 +61,11 @@ public class AulaDAO {
 
 		try {
 
-			Class.forName("com.mysql.jdbc.Driver");
-
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/colegio", "root", "");
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:com/env");
+			DataSource dataSource = (DataSource) envCtx.lookup(DATA_SOURCE_NAME);
+			Connection con = dataSource.getConnection();
+			
 			Statement stm = con.createStatement();
 			ResultSet rs = stm.executeQuery(consulta);
 
@@ -67,7 +80,7 @@ public class AulaDAO {
 			stm.close();
 			con.close();
 
-		} catch (ClassNotFoundException e) {
+		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -86,9 +99,11 @@ public class AulaDAO {
 		String delete = "DELETE FROM aulas WHERE id=" + id;
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/colegio", "root", "");
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:com/env");
+			DataSource dataSource = (DataSource) envCtx.lookup(DATA_SOURCE_NAME);
+			Connection con = dataSource.getConnection();
+			
 			Statement stm = con.createStatement();
 			int rs = stm.executeUpdate(delete);
 
@@ -100,7 +115,7 @@ public class AulaDAO {
 			stm.close();
 			con.close();
 
-		} catch (ClassNotFoundException e) {
+		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -115,10 +130,11 @@ public class AulaDAO {
 		Aula aux;
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/colegio", "root", "");
-
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:com/env");
+			DataSource dataSource = (DataSource) envCtx.lookup(DATA_SOURCE_NAME);
+			Connection con = dataSource.getConnection();
+			
 			Statement stm = con.createStatement();
 			ResultSet rs = stm.executeQuery("SELECT * FROM aulas");
 
@@ -131,7 +147,7 @@ public class AulaDAO {
 			stm.close();
 			con.close();
 
-		} catch (ClassNotFoundException e) {
+		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -148,9 +164,11 @@ public class AulaDAO {
 		String consulta = "UPDATE aulas SET nombre='" + nombre + "', capacidad=" + capacidad + " WHERE id=" + ID;
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/colegio", "root", "");
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:com/env");
+			DataSource dataSource = (DataSource) envCtx.lookup(DATA_SOURCE_NAME);
+			Connection con = dataSource.getConnection();
+			
 			Statement stm = con.createStatement();
 			int rs = stm.executeUpdate(consulta);
 
@@ -162,7 +180,7 @@ public class AulaDAO {
 			stm.close();
 			con.close();
 
-		} catch (ClassNotFoundException e) {
+		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -170,4 +188,49 @@ public class AulaDAO {
 			e.printStackTrace();
 		}
 	}
+
+	//METODO ACTUAL DE BUSQUEDA
+		public static Aula buscar(String s) {
+			
+			Aula au = null;
+			
+			try {
+
+				Context initCtx = new InitialContext();
+				Context envCtx = (Context) initCtx.lookup("java:com/env");
+				DataSource dataSource = (DataSource) envCtx.lookup(DATA_SOURCE_NAME);
+				Connection con = dataSource.getConnection();
+				
+				Statement stmt = con.createStatement();
+				
+
+				// "SELECT * FROM alumnos WHERE nombre_apellidos = 'Jairo Muñoz' OR
+				// numero_matricula = 99888777"
+
+				String consulta = "SELECT * FROM aulas WHERE ";
+				try {
+					Integer.parseInt(s);
+					consulta = consulta + "id = " + s;
+				} catch (java.lang.NumberFormatException e) {
+					String n = s.substring(0, s.indexOf(" "));
+					consulta = consulta + "nombre='" + n + "'";
+				}
+				ResultSet rs = stmt.executeQuery(consulta);
+				if (!rs.next()) {
+					System.out.println("Aula no encontrada.\n");
+				} else {
+					au.setNombre(rs.getString("nombre"));
+					au.setCapacidad(Integer.parseInt(rs.getString("capacidad")));
+					au.setId();
+				}
+				rs.close();
+				stmt.close();
+				con.close();
+			} catch (NamingException e) {
+				System.out.println("No se ha encontrado el driver.\n");
+			} catch (SQLException e) {
+				System.out.println("Error de SQL.\n");
+			}
+			return au;
+		}
 }

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -59,6 +60,7 @@ public class AlumnoDAO {
 
 		String consulta = "SELECT * FROM alumnos WHERE nombre='" + nombre + "' AND apellidos='" + apellidos + "'";
 		Alumno aux = null;
+		
 		try {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:com/env");
@@ -132,9 +134,17 @@ public class AlumnoDAO {
 	}
 
 	// Busca un alumno a partir de su identificador y lo elimina de la base de datos
-	public static void borrar(Integer numMatricula) {
+	public static void borrar(String param) {
 
-		String delete = "DELETE FROM alumnos WHERE numMatricula=" + numMatricula;
+		String delete = "DELETE FROM alumnos WHERE ";
+		try {
+			Integer.parseInt(param);
+			delete = delete + "numero_matricula = " + param;
+		} catch (java.lang.NumberFormatException e) {
+			String n = param.substring(0, param.indexOf(" "));
+			String a = param.substring(param.indexOf(" "));
+			delete = delete + "nombre='" + n + "' apellidos = '" + a + "'";
+		}
 
 		try {
 			Context initCtx = new InitialContext();
@@ -144,11 +154,6 @@ public class AlumnoDAO {
 			
 			Statement stm = con.createStatement();
 			int rs = stm.executeUpdate(delete);
-
-			if (rs != 0)
-				System.out.println("Se ha borrado el alumno con numero de matricula " + numMatricula);
-			else
-				System.out.println("El alumno con numero de matricula " + numMatricula + " no existía de antemano.");
 
 			stm.close();
 			con.close();
@@ -163,8 +168,8 @@ public class AlumnoDAO {
 	}
 
 	// Muestra por consola toda la informacion de todos los alumnos
-	public static void mostrar() {
-
+	public static ArrayList<Alumno> mostrar() {
+		ArrayList<Alumno> al_list= new ArrayList();
 		Alumno aux;
 
 		try {
@@ -179,12 +184,13 @@ public class AlumnoDAO {
 			while (rs.next()) {
 				aux = new Alumno(rs.getString("nombre"), rs.getString("apellidos"), rs.getInt("telefono"),
 						rs.getString("direccion"), rs.getString("email"));
-				System.out.println(aux);
+				al_list.add(aux);
 			}
 
 			rs.close();
 			stm.close();
 			con.close();
+			
 
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
@@ -193,6 +199,7 @@ public class AlumnoDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return al_list;
 
 	}
 
@@ -213,7 +220,8 @@ public class AlumnoDAO {
 			Connection con = dataSource.getConnection();
 			
 			Statement stm = con.createStatement();
-			int rs = stm.executeUpdate(consulta);
+			stm.executeUpdate(consulta);
+			/*int rs = stm.executeUpdate(consulta);
 
 			if (rs != 0) {
 
@@ -221,7 +229,7 @@ public class AlumnoDAO {
 						"El alumno con número de matrícula " + numMatricula + " se ha modificado correctamente.\n");
 			} else
 				System.out.println("El alumno con número de matrícula " + numMatricula + " no existe.\n");
-
+			*/
 			stm.close();
 			con.close();
 
