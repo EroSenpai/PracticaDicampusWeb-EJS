@@ -16,6 +16,17 @@
 		<input type="submit" name="boton" value="Buscar">
 	</form></div>
 
+	<%if (request.getParameter("boton") != null) {%> 
+	
+	<jsp:useBean id="alumno" class="beans.Alumno" scope="session"></jsp:useBean>
+
+	Nombre y apellidos: <jsp:getProperty name="alumno" property="nombre"></jsp:getProperty> <jsp:getProperty name="alumno" property="apellido"></jsp:getProperty><br>
+	Número de matrícula: <jsp:getProperty name="alumno" property="numMatricula"></jsp:getProperty><br>
+	Dirección: <jsp:getProperty name="alumno" property="direccion"></jsp:getProperty><br>
+	Email: <jsp:getProperty name="alumno" property="email"></jsp:getProperty><br>
+	Teléfono: <jsp:getProperty name="alumno" property="telefono"></jsp:getProperty><br>
+
+	<%} %>
 
 	<div><jsp:include page="./footer.html" /></div>
 </body>

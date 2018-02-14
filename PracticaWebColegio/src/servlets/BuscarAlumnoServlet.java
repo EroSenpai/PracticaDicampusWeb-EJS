@@ -32,7 +32,7 @@ public class BuscarAlumnoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String param = request.getParameter("parametro"); //cambiar por nombre de Field del formulario
+		String param = request.getParameter("busqueda"); //cambiar por nombre de Field del formulario
 
 		HttpSession sesion = request.getSession(true);
 
@@ -40,7 +40,7 @@ public class BuscarAlumnoServlet extends HttpServlet {
 
 		sesion.setAttribute("alumno", al);
 
-		request.getRequestDispatcher("").forward(request, response); // Añadir direccion del JSP final
+		request.getRequestDispatcher("/buscar-alumno.jsp").forward(request, response); // Añadir direccion del JSP final
 
 	}
 
